@@ -17,7 +17,14 @@ abstract public class State{
 
     // Methoden
     public State tick (Cat cat){
-        return successor(cat);
+
+        if(time == duration) {
+            time = 0;
+            return successor(cat);
+        } else {
+            time++;
+            return this;
+        }
     }
 
     public abstract State successor(Cat cat);

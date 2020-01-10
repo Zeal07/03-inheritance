@@ -1,11 +1,10 @@
 package de.thro.inf.prg3.a03;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import de.thro.inf.prg3.a03.states.*;
 
 public class Cat{
 	// initially, animals are sleeping
-	private State state = new SleepingState(this.getSleep());
+	private State state;
 
 	// state durations (set via constructor), ie. the number of ticks in each state
 	private final int sleep;
@@ -20,6 +19,8 @@ public class Cat{
 		this.sleep = sleep;
 		this.awake = awake;
 		this.digest = digest;
+
+		state = new SleepingState(sleep);
 	}
 
 	public void tick(){
